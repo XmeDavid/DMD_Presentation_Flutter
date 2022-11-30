@@ -49,7 +49,7 @@ List<Widget> slides = [
         "Live Demo"
       ],
       bulletSize: 64,
-      image: Image.asset("/images/agenda.png"),
+      image: Image.asset("images/agenda.png"),
       author: author,
       page: 2
   ),
@@ -70,7 +70,7 @@ List<Widget> slides = [
       "Not exclusively used in Flutter",
       "Syntax Similar to JavaScript, Java and C++",
     ],
-    image: SvgPicture.asset("/svg/dart_white.svg"),
+    image: SvgPicture.asset("svg/dart_white.svg"),
     author: author,
   ),
   /** WHY CHOOSE DART */
@@ -118,7 +118,7 @@ List<Widget> slides = [
         "Type Safe",
       ],
       bulletSize: 52,
-      image: Image.asset("/images/pub.png"),
+      image: Image.asset("images/pub.png"),
       author: author,
       page: 5
   ),
