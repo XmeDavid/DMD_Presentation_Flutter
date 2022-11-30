@@ -72,6 +72,7 @@ class CodeWidget extends StatelessWidget {
                 ),
                 textStyle: TextStyle(
                     fontFamily: 'SourceCode',
+                    fontSize: 18,
                     color: enabled ? Colors.white : Colors.white.withOpacity(0.7)
                 ),
                 enabled: enabled,

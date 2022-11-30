@@ -94,8 +94,8 @@ List<Widget> slides = [
       "Strong developer community",
     ],
     image: CodeWidget(
-      width: 400,
-      height: 512,
+      width: 600,
+      height: 600,
       enabled: false,
       code: syntaxComparison,
     ),
@@ -118,7 +118,7 @@ List<Widget> slides = [
         "Type Safe",
       ],
       bulletSize: 52,
-      image: const SizedBox(),
+      image: Image.asset("/images/pub.png"),
       author: author,
       page: 5
   ),
@@ -133,14 +133,14 @@ List<Widget> slides = [
     page: 6,
   ),
   TitleAndCode(
-    title: const Text("Basic\nOperations",
+    title: const Text("Variables",
       style: TextStyle(
         color: Colors.white,
         fontSize: 96
       ),
     ),
     subtitle: Text(""),
-    code: basicOperations,
+    code: variables,
     author: author,
     page: 7,
     enabled: true
@@ -272,7 +272,71 @@ String syntaxComparison = '''
 // Transcribed from dart.dev - https://dart.dev/assets/dash/svg/1-3%20familiar%20syntax.svg
 ''';
 
-String basicOperations = '''
-  int a = 10;
+
+/**
+ * Variable Declaration
+    Em dart, todas as variáveis são objetos, ou mais precisamentes, as variáveis são referencias para objetos. Mesmo tipos mais "primitivos como ints e strings".
+    Neste exemple, a variável name tem uma referencia para um objeto do tipo String, com o valor de Bob.
+    Dart infere o tipo de objeto, por isso não á necessidade de especificar String, e pode-se por apenas var
+    Se um objeto não é suposto estar restrito a um unico tipo de objeto, pode ser declarado como Object, ou dynamic se necessário.
+    Todas as variáveis não inicializadas dão sempre default para null.
+
+ * Late initialization
+    O modificador late, serve para declarar uma variavel que vai ser inisializada depois da sua declaração.
+    Isto tem serve principalmente para declarar non-null variables, que só vão ser inicializadas depois da sua declaração, ou para inicializar uma variável em lazy-loading.
+ * Lazy init
+    Em lazy initialiation, a variável é só inicializada quando for precisa/usada
+    Neste caso, se a variável temperature nunca for utilizada, nunca vai ser inicializada, e assim poupa-se executar a função readThermometer, que pode ser muito lenta.
+ * Constans
+    Constantes são iguais a todas as linguagens, servem para declarar variaveis que vao ser constantes, como qualquer variavel, pode o tipo da variavel pode ser inferido.
+    De notar que temos duas syntax distintas, const e final.
+ * Const vs Final
+    Ambas declaram constantes, a diferença é que const tem que ser inicializado na declaração, e final apenas tem a regra de só pode ser inicializado uma vez. Mas essa vez pode ser depois da sua declaração.
+ * Const
+    Const pode ser usado para mais do que declarar variaveis, pode ser usado para criar valores, ou até construtores que criem valores constantes.
+    Const pode ser omitido
+ * Final
+    Apesar de um objeto declarado como final não poder ser modificado, os seus campos, a não ser que também sejam final, podem ser modificados. Isto difere do const, onde nem o objeto nem os seus campos podem ser alterados, const é completamente immutável.
+ *  */
+String variables = '''
+//Variable Declaration
+  String name = 'Bob';
+  var name = 'Bob';
+  Object name = 'Bob';
+  dynamic name = 'Bob;
+
+//Late variables
+  late String description;
+
+  void main() {
+    description = 'Feijoada!';
+    print(description);
+  }
+  
+// Lazy initialization.
+  late String temperature = readThermometer(); 
+  
+//Constants
+  const name = 'Bob';
+  const String name = 'Bob';
+  final name = 'Bob';
+  final static name = 'Bob';
+  
+//Const vs Final
+  const name; // Const variable needs to be initialized
+  name = 'Bob' // ERROR! - Can't attribute value to constant
+  
+  final name;
+  final = 'Bob'; // Works fine!
+
+//Const
+  var foo = const [];
+  final bar = const [];
+  const baz = []; // Equivalent to `const []`
+  foo = [1, 2, 3]; // Was const []
+  
+//Final
+  final Person person = Person(firstName: "Bob", lastName:"Bobby")
+  person.lastName = "Robby" // Works fine!
 ''';
 

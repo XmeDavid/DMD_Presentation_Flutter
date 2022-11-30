@@ -66,6 +66,7 @@ flutter:
     - assets/images/screenshot.png
     - assets/images/agenda.png
     - assets/images/syntax.png
+    - assets/images/pub.png
     - assets/svg/dart_white.svg
     - assets/svg/syntax.svg
   #   - images/a_dot_ham.jpeg
