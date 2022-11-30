@@ -1,14 +1,42 @@
 import 'package:flutter/material.dart';
 
+
 class Circle extends StatelessWidget {
   final Color color;
-  const Circle({Key? key, required this.color}) : super(key: key);
+  final double size;
+  final String text;
+  final double padding;
+  final bool shadow;
+  const Circle({Key? key, required this.color, required this.size, this.text = "", this.padding = 0, this.shadow = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4),
-      child: Container(width: 16, height: 16, decoration: BoxDecoration(color: color, borderRadius: const BorderRadius.all(Radius.circular(8)))),
+      padding: EdgeInsets.all(padding),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(size/2)),
+            color: color,
+            boxShadow: shadow ? [
+              BoxShadow(
+                  color: color,
+                  spreadRadius: size/8,
+                  blurRadius: size/2,
+              )
+            ] : null
+        ),
+        width: size,
+        height: size,
+        child: Center(
+            child: Text(text,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold
+              ),
+            )
+        ),
+      ),
     );
   }
 }
